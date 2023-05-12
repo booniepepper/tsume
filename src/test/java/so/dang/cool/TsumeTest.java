@@ -1,15 +1,15 @@
 package so.dang.cool;
 
-public class TsumeTest {
-    void verifyHello() {
-        if (!"Hello World!".equals(new TsumeLib().getMessage())) {
-            throw new AssertionError();
-        } else {
-            System.out.println("Succeeded");
-        }
-    }
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public static void main(String[] args) {
-        new TsumeTest().verifyHello();
+public class TsumeTest {
+    @Test void verifyHello() {
+        var pikachu = Tsume.init()
+                .s("pika")
+                .s("chu!")
+                .f(String::concat)
+                .top();
+        assertEquals("pikachu!", pikachu);
     }
 }
